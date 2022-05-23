@@ -12,7 +12,7 @@ app.use(cors())
 app.use('/users',usersRouter)
 
 mongoose.connect(
-    "mongodb+srv://sa:admin@clustec.xtrci.mongodb.net/CinepolisWebDatabase?retryWrites=true&w=majority"
+    "mongodb+srv://sa:admin@cinepolisweb.5c7gi.mongodb.net/?retryWrites=true&w=majority"
     );
 
 

@@ -32,5 +32,22 @@ router.post("/login", async (req,res) => {
     */
 })
 
+router.post("/createUser", async (req,res) => {
+
+    const newUser = req.body;
+    const newEmail = req.body.email
+    UserModel.aggregate([{$match:{email:{$eq:newEmail}}}],(err,result)=>{
+        const validEmail = result[0] === undefined
+        if(!validEmail){
+            res.status(404).send()
+        }
+    });
+    newUser['type'] = "client"
+    newUser['vehicles'] = []
+    newUser['schedule'] = {}
+    const newValidUser = UserModel(newUser)
+    newValidUser.save()
+})
+
 
 module.exports = router;
