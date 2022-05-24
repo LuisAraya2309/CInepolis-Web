@@ -50,11 +50,12 @@ router.post("/updateSnackByName", async (req,res) => {
 })
 
 router.get("/getSnack",(req,res) => {
-    console.log("Encuentra la funcion");
+   
     SnackModel.find({}, (err,result) =>{
         if (err){
             res.json(err)
         } else {
+            console.log(result);
             res.json(result)
         }
     })
