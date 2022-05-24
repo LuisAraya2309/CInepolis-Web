@@ -14,13 +14,13 @@ export function ManageSnackPage() {
                 <br/>
                 <div className="row row-cols-2 row-cols-md-2 g-4">
                     
-                    <PrincipalCard props={{title:"Agregar un parqueo",buttonTitle:"Agregar",redirectLink:"/CreateParking"}} />
+                    <PrincipalCard props={{title:"Ingresar un alimento",buttonTitle:"Agregar",redirectLink:"/CreateSnack"}} />
 
                     <MangSnackForm props={{title:"Consultar un parqueo",buttonTitle:"Consultar", action:"Consultar"}} />
 
-                    <MangSnackForm props={{title:"Modificar información",buttonTitle:"Actualizar", action:"Actualizar"}} />
+                    <MangSnackForm props={{title:"Modificar un alimento",buttonTitle:"Actualizar", action:"Actualizar"}} />
 
-                    <MangSnackForm props={{title:"Eliminar un parqueo",buttonTitle:"Eliminar", action:"Eliminar"}} />
+                    <MangSnackForm props={{title:"Eliminar un alimento",buttonTitle:"Eliminar", action:"Eliminar"}} />
 
                 </div>
                 

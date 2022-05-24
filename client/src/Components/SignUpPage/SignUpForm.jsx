@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react'
 import {useForm} from 'react-hook-form';
-import { useState } from 'react';
-import { useEffect } from 'react';
+
 
 import axios from 'axios';
 
@@ -33,6 +32,7 @@ export function SignUpForm() {
             .then(res => res.json()).then((a) => {
               alert('Documento almacenado con éxito')
               vaccineInfo = a
+              console.log(vaccineInfo)
             }).catch(e => console.log(e)) // Or Error in console
         }
       }
