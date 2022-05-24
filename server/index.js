@@ -11,10 +11,10 @@ app.use(cors())
 app.use('/users',usersRouter)
 
 mongoose.connect(
-    "mongodb+srv://sa:admin@cinepolisweb.5c7gi.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://sa:admin@cinepolisweb.5c7gi.mongodb.net/Cinepolis"
     );
 
-
+    
 
 app.listen(3001,()=>{
     console.log('Servers Runs')
