@@ -10,19 +10,16 @@ router.post("/",async(req,res)=>{
 //Login Route
 router.post("/login", async (req,res) => {
     
-    UserModel.find({},(err,result)=>{
-        console.log(result)
-    })
     
-    /*
+    
     const user = {
         "email":req.body.email,
         "password":req.body.password,
         "type":""
     }
     console.log(user)
-    */
-    /*
+    
+    
     UserModel.aggregate([{$match:{email:{$eq:user.email}}},{$match:{password:{$eq:user.password}}}], (err,result) =>{
         if (err){
             res.status(404).send('User invalid')
@@ -35,7 +32,7 @@ router.post("/login", async (req,res) => {
             res.json(user)
         }
     })
-    */
+    
 })
 
 router.post("/createUser", async (req,res) => {
