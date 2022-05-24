@@ -2,7 +2,6 @@ const e = require("express");
 const express = require("express")
 const app = express()
 const mongoose = require('mongoose')
-const UserModel = require("./models/Users")
 const usersRouter = require('./routes/UsersRoutes')
 
 const cors = require('cors')
