@@ -40,7 +40,9 @@ export function ModifySnack() {
     const onSubmit = async(data) =>{
 
         try{
-            axios.post('http://localhost:3001/snacks/updateSnackByName',data).then((response) => {
+            let snackInfoImage = data
+            snackInfoImage.image = "https://drive.google.com/uc?export=view&id=" + imageInfo.id + "&rl"
+            axios.post('http://localhost:3001/snacks/updateSnackByName',snackInfoImage).then((response) => {
             })
             moveTo()
         }catch(err){
@@ -55,7 +57,7 @@ export function ModifySnack() {
                 <div className="card bg-light w-100 mb-3" >                    
                     <div className="row g-0">
                         <div className="col-md-4">
-                        <img src={""} className="img-fluid rounded-start" alt="..."/>
+                        <img src={snackInfo.image} className="img-fluid rounded-start" alt="..."/>
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">

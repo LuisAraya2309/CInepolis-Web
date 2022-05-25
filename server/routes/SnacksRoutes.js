@@ -36,7 +36,6 @@ router.post("/deleteSnackByName", async (req,res) => {
 router.post("/updateSnackByName", async (req,res) => {
 
     const setAttributes = {stock: req.body.stock, price:req.body.price, image:req.body.image};
-
     SnackModel.updateOne({name:req.body.name},{$set:setAttributes},(err,result) =>{
 
         const validName = result[0] === undefined
@@ -55,7 +54,6 @@ router.get("/getSnack",(req,res) => {
         if (err){
             res.json(err)
         } else {
-            console.log(result);
             res.json(result)
         }
     })

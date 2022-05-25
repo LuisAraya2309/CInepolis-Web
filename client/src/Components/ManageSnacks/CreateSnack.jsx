@@ -37,7 +37,9 @@ export  function CreateSnack() {
     const onSubmit = async(data) =>{
 
         try{
-            axios.post('http://localhost:3001/snacks/insertSnack',data).then((response) => {
+            let snackInfoImage = data
+            snackInfoImage.image = "https://drive.google.com/uc?export=view&id=" + imageInfo.id + "&rl"
+            axios.post('http://localhost:3001/snacks/insertSnack',snackInfoImage).then((response) => {
             })
             moveTo()
         }catch(err){

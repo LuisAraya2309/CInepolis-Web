@@ -13,9 +13,9 @@ export function SnackList({props}) {
     const moveTo = (snackInfo) =>{
         let path 
         if(props.action === 'Eliminar'){
-            path = "/"
+            path = "/ManageSnack"
         }else{
-            path = "/"
+            path = "/ModifySnack"
         }
 
         navigate(path, {state:{snackInfo:snackInfo}})
