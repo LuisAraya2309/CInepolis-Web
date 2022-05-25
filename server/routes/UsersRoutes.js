@@ -17,7 +17,6 @@ router.post("/login", async (req,res) => {
         "password":req.body.password,
         "type":""
     }
-    console.log(user)
     
     
     UserModel.aggregate([{$match:{email:{$eq:user.email}}},{$match:{password:{$eq:user.password}}}], (err,result) =>{

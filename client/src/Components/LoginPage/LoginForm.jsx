@@ -17,6 +17,7 @@ export  function LoginForm() {
         try{
             
             const response = await axios.post('http://localhost:3001/users/login', data);
+            console.log(response)
             const userLogged = response.data.email
             const userType = response.data.type
             loggedIn(userLogged,userType)

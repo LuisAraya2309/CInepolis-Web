@@ -10,6 +10,7 @@ import { SignUp } from './SignUpPage/SignUp';
 import { ManageSnackPage } from "./ManageSnacks/ManageSnackPage";
 import { CreateSnack } from "./ManageSnacks/CreateSnack";
 import { ModifySnack } from "./ManageSnacks/ModifySnacks";
+import { Billboard } from '../BillboardPage/Billboard';
 
 export function App() {
   return (
@@ -27,6 +28,8 @@ export function App() {
               <Route exact path="/CreateSnack" element={<CreateSnack />}/>
 
               <Route exact path="/ModifySnack" element={<ModifySnack />}/>
+
+              <Route exact path="/Billboard" element={<Billboard />}/>
 
           </Routes>
 
