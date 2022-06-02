@@ -9,8 +9,6 @@ import signOutImage from "../../images/signOut.png"
 export function ClientPage() {
   const {state} = useLocation();
   const userLogged = state.user
-  
-  
 
   return (
     <Fragment>
