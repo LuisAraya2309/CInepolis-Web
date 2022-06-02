@@ -7,8 +7,8 @@ import { DeleteCreditCard } from './DeleteCreditCard'
 export function ManageCreditCardPage() {
 
   const {state} = useLocation();
-  const clientId = state.userLogged.clientInformation.id;
-
+  const clientEmail = state.userLogged;
+  
   return (
     <Fragment>
         <header className="App-header">
@@ -18,9 +18,9 @@ export function ManageCreditCardPage() {
                 <br/>
                 <div className="row row-cols-2 row-cols-md-2 g-2">
                     
-                    <PrincipalCard props={{title:"Agregar un método de pago",buttonTitle:"Agregar",redirectLink:"/CreateCreditCard",params:clientId}} />
+                    <PrincipalCard props={{title:"Agregar un método de pago",buttonTitle:"Agregar",redirectLink:"/CreateCreditCard",params:clientEmail}} />
 
-                    <DeleteCreditCard props={{title:"Eliminar un método de pago", clientId:clientId}} />
+                    <DeleteCreditCard props={{title:"Eliminar un método de pago", clientEmail:clientEmail}} />
 
                 </div>
                 

@@ -17,7 +17,8 @@ router.post("/login", async (req,res) => {
         "type":""
     }
     
-    
+    console.log(user)
+
     UserModel.aggregate([{$match:{email:{$eq:user.email}}},{$match:{password:{$eq:user.password}}}], (err,result) =>{
         if (err){
             res.status(404).send('User invalid')

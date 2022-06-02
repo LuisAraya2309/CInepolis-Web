@@ -8,8 +8,7 @@ export  function CreateCreditCard() {
 
     const {register,handleSubmit} = useForm();
     const {state} = useLocation();
-    const clientId = state.userLogged;
-
+    const clientEmail = state.userLogged;
     let navigate = useNavigate()
     const moveTo = () =>{
       let path = '/ManageCreditCard'
@@ -19,7 +18,7 @@ export  function CreateCreditCard() {
     const onSubmit = async(data) =>{
 
         try{
-            data.clientId = clientId
+            data.clientEmail = clientEmail
             axios.post('http://localhost:3001/creditCards/createCreditCard',data).then((response) => {
             })
             moveTo()

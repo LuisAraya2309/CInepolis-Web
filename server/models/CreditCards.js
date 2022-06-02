@@ -1,7 +1,7 @@
 const { default: mongoose } = require("mongoose");
 
 const CreditCardSchema = new mongoose.Schema({
-    clientId:{
+    clientEmail:{
         type:Number,
         required:false,
     },

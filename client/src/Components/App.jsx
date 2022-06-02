@@ -12,7 +12,6 @@ import { CreateSnack } from "./ManageSnacks/CreateSnack";
 import { ModifySnack } from "./ManageSnacks/ModifySnacks";
 import { Billboard } from './BillboardPage/Billboard';
 import { Tickets } from './BillboardPage/Tickets';
-import { Billboard } from '../BillboardPage/Billboard';
 import { ManageClientPage } from "./ManageClients/ManageClientPage";
 import { CreateClient } from "./ManageClients/CreateClient";
 import { ModifyClient } from "./ManageClients/ModifyClient";

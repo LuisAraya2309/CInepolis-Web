@@ -17,7 +17,7 @@ export function DeleteCreditCard({props}) {
     }
     
     useEffect(() => {
-        axios.post('http://localhost:3001/creditCards/getCreditCardByClient',props.clientId).then((response) => {
+        axios.post('http://localhost:3001/creditCards/getCreditCardByClient',{clientEmail:"grabieljn@itcr.ac.cr"}).then((response) => {
             setCreditCardList(response.data)
         })
         // eslint-disable-next-line

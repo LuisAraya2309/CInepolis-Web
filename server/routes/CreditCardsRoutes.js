@@ -1,3 +1,4 @@
+
 const router = require('express').Router();
 const CreditCardModel = require('../models/CreditCards')
 
@@ -30,7 +31,8 @@ router.post("/deleteCreditCardByNumber", async (req,res) => {
 })
 
 router.post("/getCreditCardByClient", async (req,res) => {
-    CreditCardModel.aggregate([{$match:{clientId:{$eq:req.body.clientId}}}], (err,result) =>{
+    console.log(req.body);
+    CreditCardModel.aggregate([{$match:{clientEmail:{$eq:req.body.clientEmail}}}], (err,result) =>{
         if (err){
             res.status(404).send('Client invalid')
         }
@@ -42,3 +44,5 @@ router.post("/getCreditCardByClient", async (req,res) => {
         }
     })
 })
+
+module.exports = router;
