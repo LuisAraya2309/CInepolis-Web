@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
     lastname2:{
         type:String,
         required:false,
+    },
+    clientInformation:{
+        type:Object,
+        required:false,
     }
 
 });

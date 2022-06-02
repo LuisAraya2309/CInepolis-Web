@@ -2,42 +2,30 @@ import React,{Fragment} from 'react'
 import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
+import {guardarArchivo} from "../GeneralResources/AuxiliarFunctions.js"
 
-var imageInfo 
+var pdfInfo = []
 
-export  function CreateSnack() {
-
-    function guardarArchivo(e) {
-        var file = e.target.files[0] //the file
-        var reader = new FileReader() //this for convert to Base64 
-        reader.readAsDataURL(e.target.files[0]) //start conversion...
-        reader.onload = function (e) { //.. once finished..
-          var rawLog = reader.result.split(',')[1]; //extract only thee file data part
-          console.log("Prueba")
-          console.log(file.name)
-          var dataSend = { dataReq: { data: rawLog, name: file.name, type: file.type }, fname: "uploadFilesToGoogleDrive" }; //prepare info to send to API
-          fetch('https://script.google.com/macros/s/AKfycbxpJthcQU0MinllxonsFDGw87shLcXGvM4I9rehsLeQd2Ti1oQ/exec', //your AppsScript URL
-            { method: "POST", body: JSON.stringify(dataSend) }) //send to Api
-            .then(res => res.json()).then((a) => {
-                alert('Documento almacenado con éxito')
-                imageInfo = a
-                console.log(imageInfo)
-            }).catch(e => console.log(e)) // Or Error in console
-        }
-      }
+export  function CreateClient() {
 
     const {register,handleSubmit} = useForm();
 
     let navigate = useNavigate()
     const moveTo = () =>{
-      let path = '/ManageSnack'
+      let path = '/ManageClient'
       navigate(path)
     }
 
     const onSubmit = async(data) =>{
 
         try{
-            axios.post('http://localhost:3001/snacks/insertSnack',data).then((response) => {
+
+            data.type = 'client'
+            data.clientInformation = {"id":data.ID, "birthDate":data.birthDate,"vaccines":data.vaccines,
+            "vaccinationCard":"https://drive.google.com/uc?export=view&id=" + pdfInfo[0] + "&rl"}
+            delete data["ID"]; delete data["birthDate"]; delete data["vaccines"];
+            
+            axios.post('http://localhost:3001/users/createUser',data).then((response) => {
             })
             moveTo()
         }catch(err){
@@ -93,7 +81,7 @@ export  function CreateSnack() {
                                                 </select>
                                         </div>
                                         <div className="col"> 
-                                            <input type="file" accept="application/pdf" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e)} />
+                                            <input type="file" accept="application/pdf" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e,pdfInfo)} />
                                                     
                                         </div>
                                     </div>
@@ -112,7 +100,7 @@ export  function CreateSnack() {
 
                                     <br></br>
                                     <center>
-                                        <button type="submit" className="btn btn-dark text-center">Registrar Usuario</button>    
+                                        <button type="submit" className="btn btn-dark text-center">Ingresar nuevo cliente</button>    
                                     </center>
                                 </form>
                             </div>
@@ -122,7 +110,5 @@ export  function CreateSnack() {
             </div>
         </header>
       </Fragment>
-    
   )
-
 }

@@ -1,41 +1,26 @@
 import React,{Fragment} from 'react'
 import {useForm} from 'react-hook-form';
-
-
+import {guardarArchivo} from "../GeneralResources/AuxiliarFunctions.js"
 import axios from 'axios';
+
+var pdfInfo = []
 
 export function SignUpForm() {
 
     const {register,handleSubmit} = useForm();
-    var vaccineInfo
 
     const onSubmit = async(data) =>{
         try{
-            const response = await axios.post('http://localhost:3001/users/createUser', data);
-            console.log(response)
+            data.type = 'client'
+            data.clientInformation = {"id":data.ID, "birthDate":data.birthDate,"vaccines":data.vaccines,
+            "vaccinationCard":"https://drive.google.com/uc?export=view&id=" + pdfInfo[0] + "&rl"}
+            delete data["ID"]; delete data["birthDate"]; delete data["vaccines"];
+
+            await axios.post('http://localhost:3001/users/createUser', data);
         }catch(err){
                 alert(err)
         }
     }
-
-    function guardarArchivo(e) {
-        var file = e.target.files[0] //the file
-        var reader = new FileReader() //this for convert to Base64 
-        reader.readAsDataURL(e.target.files[0]) //start conversion...
-        reader.onload = function (e) { //.. once finished..
-          var rawLog = reader.result.split(',')[1]; //extract only thee file data part
-          console.log("Prueba")
-          console.log(file.name)
-          var dataSend = { dataReq: { data: rawLog, name: file.name, type: file.type }, fname: "uploadFilesToGoogleDrive" }; //prepare info to send to API
-          fetch('https://script.google.com/macros/s/AKfycbxpJthcQU0MinllxonsFDGw87shLcXGvM4I9rehsLeQd2Ti1oQ/exec', //your AppsScript URL
-            { method: "POST", body: JSON.stringify(dataSend) }) //send to Api
-            .then(res => res.json()).then((a) => {
-              alert('Documento almacenado con éxito')
-              vaccineInfo = a
-              console.log(vaccineInfo)
-            }).catch(e => console.log(e)) // Or Error in console
-        }
-      }
 
   return (
       <Fragment>
@@ -78,7 +63,7 @@ export function SignUpForm() {
                         </select>
                 </div>
                 <div className="col"> 
-                    <input type="file" accept="application/pdf" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e)} />
+                    <input type="file" accept="application/pdf" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e,pdfInfo)} />
                             
                 </div>
             </div>
