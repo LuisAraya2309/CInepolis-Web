@@ -16,8 +16,6 @@ export function ManageSnackPage() {
                     
                     <PrincipalCard props={{title:"Ingresar un alimento",buttonTitle:"Agregar",redirectLink:"/CreateSnack"}} />
 
-                    <MangSnackForm props={{title:"Consultar un parqueo",buttonTitle:"Consultar", action:"Consultar"}} />
-
                     <MangSnackForm props={{title:"Modificar un alimento",buttonTitle:"Actualizar", action:"Actualizar"}} />
 
                     <MangSnackForm props={{title:"Eliminar un alimento",buttonTitle:"Eliminar", action:"Eliminar"}} />

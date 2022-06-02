@@ -6,6 +6,7 @@ const usersRouter = require('./routes/UsersRoutes')
 const snacksRouter = require('./routes/SnacksRoutes')
 const moviesRouter = require('./routes/MoviesRoutes')
 const sessionsRouter = require('./routes/SessionsRoutes')
+const creditCardsRouter = require('./routes/CreditCardsRoutes')
 
 const cors = require('cors')
 
@@ -15,6 +16,7 @@ app.use('/users',usersRouter)
 app.use('/snacks',snacksRouter)
 app.use('/movies',moviesRouter)
 app.use('/sessions',sessionsRouter)
+app.use('/creditCards',creditCardsRouter)
 
 mongoose.connect(
     "mongodb+srv://sa:admin@cinepolisweb.5c7gi.mongodb.net/Cinepolis"

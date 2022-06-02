@@ -3,7 +3,10 @@ import { useLocation } from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import {useNavigate} from "react-router-dom"
 import axios from 'axios'
+import {guardarArchivo} from "../GeneralResources/AuxiliarFunctions.js"
+import cinepolis from "../../images/cinepolis.png"
 
+var pdfInfo = []
 export function ModifyClient() {
 
     const {state} = useLocation();
@@ -19,7 +22,13 @@ export function ModifyClient() {
     const onSubmit = async(data) =>{
 
         try{
-            axios.post('http://localhost:3001/snacks/updateSnackByName',data).then((response) => {
+
+            data.clientInformation = {"id":clientInfo.clientInformation.id, "birthDate":clientInfo.clientInformation.birthDate,"vaccines":data.vaccines,
+            "vaccinationCard":"https://drive.google.com/uc?export=view&id=" + pdfInfo[0] + "&rl"}
+            delete data["ID"]; delete data["birthDate"]; delete data["vaccines"];
+
+            console.log(data)
+            axios.post('http://localhost:3001/users/updateUserByEmail',data).then((response) => {
             })
             moveTo()
         }catch(err){
@@ -34,7 +43,7 @@ export function ModifyClient() {
                 <div className="card bg-light w-100 mb-3" >                    
                     <div className="row g-0">
                         <div className="col-md-4">
-                        <img src={""} className="img-fluid rounded-start" alt="..."/>
+                        <img src={cinepolis} className="img-fluid rounded-start" alt="..." />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
@@ -46,17 +55,17 @@ export function ModifyClient() {
 
                                         <div className="col">
                                             <label htmlFor="text" className="form-label">Nombre</label>
-                                            <input type="text" className="form-control" value = {clientInfo.name} {...register('name',{required:true})}/>
+                                            <input type="text" className="form-control" value = {clientInfo.name} readOnly />
                                         </div>
                                         
                                         <div className="col">
                                             <label htmlFor="text" className="form-label">Apellido1</label>
-                                            <input type="text" className="form-control" value = {clientInfo.lastname1} {...register('lastname1',{required:true})}/>                                        
+                                            <input type="text" className="form-control" value = {clientInfo.lastname1} readOnly/>                                        
                                         </div>
 
                                         <div className="col">
                                             <label htmlFor="text" className="form-label">Apellido2</label>
-                                            <input type="text" className="form-control" value = {clientInfo.lastname2} {...register('lastname2',{required:true})}/>                                        
+                                            <input type="text" className="form-control" value = {clientInfo.lastname2} readOnly />                                        
                                         </div>
 
                                     </div>
@@ -66,12 +75,12 @@ export function ModifyClient() {
 
                                         <div className="col">
                                             <label htmlFor="text" className="form-label">Correo electrónico</label>
-                                            <input type="text" className="form-control" placeholder = {clientInfo.email} {...register('email',{required:true})}/>        
+                                            <input type="text" className="form-control" value = {clientInfo.email} {...register('email',{required:true})} readOnly/>        
                                         </div>
 
                                         <div className="col">
                                             <label htmlFor="text" className="form-label">Contraseña</label>
-                                            <input type="text" className="form-control" placeholder = {clientInfo.password} {...register('password',{required:true})}/>        
+                                            <input type="text" className="form-control" defaultValue = {clientInfo.password} {...register('password',{required:true})}/>        
                                         </div>
 
                                     </div>
@@ -92,7 +101,7 @@ export function ModifyClient() {
 
                                         <div className="col"> 
                                             <label htmlFor="text" className="form-label">Adjuntar comprobante</label>
-                                            <input type="file" accept="application/pdf" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e)} />
+                                            <input type="file" accept="application/pdf" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e,pdfInfo)} />
                                                     
                                         </div>
                                     </div>

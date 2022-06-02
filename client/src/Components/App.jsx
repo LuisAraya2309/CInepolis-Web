@@ -12,6 +12,12 @@ import { CreateSnack } from "./ManageSnacks/CreateSnack";
 import { ModifySnack } from "./ManageSnacks/ModifySnacks";
 import { Billboard } from './BillboardPage/Billboard';
 import { Tickets } from './BillboardPage/Tickets';
+import { Billboard } from '../BillboardPage/Billboard';
+import { ManageClientPage } from "./ManageClients/ManageClientPage";
+import { CreateClient } from "./ManageClients/CreateClient";
+import { ModifyClient } from "./ManageClients/ModifyClient";
+import { CreateCreditCard } from "./ManageCreditCard/CreateCreditCard";
+import { ManageCreditCardPage } from "./ManageCreditCard/ManageCreditCardPage";
 
 export function App() {
   return (
@@ -33,6 +39,16 @@ export function App() {
               <Route exact path="/Billboard" element={<Billboard />}/>
 
               <Route exact path="/Tickets" element={<Tickets />}/>
+
+              <Route exact path="/CreateClient" element={<CreateClient />}/>
+
+              <Route exact path="/ModifyClient" element={<ModifyClient />}/>
+
+              <Route exact path="/ManageClient" element={<ManageClientPage />}/>
+
+              <Route exact path="/ManageCreditCard" element={<ManageCreditCardPage />}/>
+
+              <Route exact path="/CreateCreditCard" element={<CreateCreditCard />}/>
 
           </Routes>
 

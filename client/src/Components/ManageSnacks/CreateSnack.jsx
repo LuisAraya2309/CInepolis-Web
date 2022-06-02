@@ -2,29 +2,12 @@ import React,{Fragment} from 'react'
 import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
+import {guardarArchivo} from "../GeneralResources/AuxiliarFunctions.js"
 
-var imageInfo 
+
+var imageInfo = []
 
 export  function CreateSnack() {
-
-    function guardarArchivo(e) {
-        var file = e.target.files[0] //the file
-        var reader = new FileReader() //this for convert to Base64 
-        reader.readAsDataURL(e.target.files[0]) //start conversion...
-        reader.onload = function (e) { //.. once finished..
-          var rawLog = reader.result.split(',')[1]; //extract only thee file data part
-          console.log("Prueba")
-          console.log(file.name)
-          var dataSend = { dataReq: { data: rawLog, name: file.name, type: file.type }, fname: "uploadFilesToGoogleDrive" }; //prepare info to send to API
-          fetch('https://script.google.com/macros/s/AKfycbxpJthcQU0MinllxonsFDGw87shLcXGvM4I9rehsLeQd2Ti1oQ/exec', //your AppsScript URL
-            { method: "POST", body: JSON.stringify(dataSend) }) //send to Api
-            .then(res => res.json()).then((a) => {
-                alert('Documento almacenado con éxito')
-                imageInfo = a
-                console.log(imageInfo)
-            }).catch(e => console.log(e)) // Or Error in console
-        }
-      }
 
     const {register,handleSubmit} = useForm();
 
@@ -38,7 +21,7 @@ export  function CreateSnack() {
 
         try{
             let snackInfoImage = data
-            snackInfoImage.image = "https://drive.google.com/uc?export=view&id=" + imageInfo.id + "&rl"
+            snackInfoImage.image = "https://drive.google.com/uc?export=view&id=" + imageInfo[0] + "&rl"
             axios.post('http://localhost:3001/snacks/insertSnack',snackInfoImage).then((response) => {
             })
             moveTo()
@@ -98,8 +81,8 @@ export  function CreateSnack() {
                                         
                                         <div className="col">
                                             <label className="form-label" htmlFor="customFile">Imagen del producto</label>
-                                            <input type="file" accept="image/*" className="form-control" id="customFile" onChange={(e) => guardarArchivo(e)} />
-                                    
+                                            <input type="file" accept="image/*" className="form-control" id="customFile" onChange={(e) => { guardarArchivo(e, imageInfo)}} />
+                                                
                                         </div>
                                     </div>
 
@@ -117,7 +100,6 @@ export  function CreateSnack() {
             </div>
         </header>
       </Fragment>
-    
   )
 
 }

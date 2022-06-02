@@ -27,6 +27,8 @@ export function ClientPage() {
     
                             <DashCard props={{title:"Carrito de Compras", image:shoppingCarImage,redirectLink:"/",params:userLogged,buttonTitle:"Consultar"}} />
                            
+                            <DashCard props={{title:"Agregar método de pago", image:signOutImage,redirectLink:"/ManageCreditCard",params:userLogged,buttonTitle:"Agregar"}} />
+
                             <DashCard props={{title:"Cerrar Sesión", image:signOutImage,redirectLink:"/",params:userLogged,buttonTitle:"Consultar"}} />
                         </div>
                                                 
