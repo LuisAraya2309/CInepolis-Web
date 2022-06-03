@@ -21,6 +21,14 @@ router.post("/getSessions", async (req,res) => {
 
 })
 
+router.post("/getSessionByCode", async (req,res) => {
 
+    const [room,hour] = req.body.sessionCode.split('-')
+    
+    SessionsModel.aggregate([{$match:{room:{$eq:room}}},{$match:{hour:{$eq:hour}}}],(err,result)=>{
+        res.json(result[0].seats)
+    })
+
+})
 
 module.exports = router;

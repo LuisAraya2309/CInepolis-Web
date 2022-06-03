@@ -17,6 +17,7 @@ import { CreateClient } from "./ManageClients/CreateClient";
 import { ModifyClient } from "./ManageClients/ModifyClient";
 import { CreateCreditCard } from "./ManageCreditCard/CreateCreditCard";
 import { ManageCreditCardPage } from "./ManageCreditCard/ManageCreditCardPage";
+import { TicketSelection } from './BillboardPage/TicketSelection';
 
 export function App() {
   return (
@@ -49,6 +50,7 @@ export function App() {
 
               <Route exact path="/CreateCreditCard" element={<CreateCreditCard />}/>
 
+              <Route exact path="/TicketSelection" element={<TicketSelection />}/>
           </Routes>
 
       </div>

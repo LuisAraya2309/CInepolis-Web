@@ -1,13 +1,12 @@
-import React,{Fragment} from 'react'
+import React,{Fragment,useState} from 'react'
 import { useLocation } from 'react-router-dom';
+import { TicketsQty } from './TicketsQty';
 
 export function Tickets() {
-
+    
     const {state} = useLocation();
-    const userLogged = state.user
-    const sessionCode = state.code
-    console.log(state)
-
+    const sessionCode = state.sessionCode;
+    
   return (
     <Fragment>
         <header className="App-header">
@@ -18,75 +17,8 @@ export function Tickets() {
                         <br />
                         <br />
 
-                        <form>
-                            <div className="row g-4">
+                        <TicketsQty props={{userLogged:"josuegupi@gmail.com", sessionCode:sessionCode}}/>
 
-                              <div class="col-auto">
-                                <h2>Tercera Edad</h2>
-                              </div>
-                              
-
-                              <div className="col-auto">
-                                <button type="submit" className="btn btn-primary mb-3">-</button>
-                              </div>
-
-                              <div className="col-auto">
-                                  <h2> 4</h2>
-                              </div>
-
-                              <div className="col-auto">
-                                <button type="submit" className="btn btn-primary mb-3">+</button>
-                              </div>
-
-                            </div>
-                            <br/>
-                            <div className="row g-4">
-
-                              <div class="col-auto">
-                                <h2>General</h2>
-                              </div>
-
-                              <div className="col-auto">
-                                <button type="submit" className="btn btn-primary mb-3">-</button>
-                              </div>
-
-                              <div className="col-auto">
-                                  <h2> 4</h2>
-                              </div>
-
-                              <div className="col-auto">
-                                <button type="submit" className="btn btn-primary mb-3">+</button>
-                              </div>
-
-                            </div>
-                            <br/>
-                            <div className="row g-4">
-
-                              <div class="col-auto">
-                                <h2>Menores</h2>
-                              </div>
-
-                              <div className="col-auto">
-                                <button type="submit" className="btn btn-primary mb-3">-</button>
-                              </div>
-
-                              <div className="col-auto">
-                                  <h2> 4</h2>
-                              </div>
-
-                              <div className="col-auto">
-                                <button type="submit" className="btn btn-primary mb-3">+</button>
-                              </div>
-
-                            </div>
-                            <br/>
-                            <center>
-                             <button type="submit" className="btn btn-primary mb-3">Continuar</button>
-                            </center>
-                            
-                        </form>
-                      
-                        
                 </div>
             </div>
                        

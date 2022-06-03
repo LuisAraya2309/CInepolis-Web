@@ -15,3 +15,5 @@ export function guardarArchivo(e, imageInfo) {
         }).catch(e => console.log(e)) // Or Error in console
     }
   }
+
+  

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 export function SessionCard({props}) {
+  
   return (
     <div className="col">
             <div className="card  border-primary text-center h-100" >
