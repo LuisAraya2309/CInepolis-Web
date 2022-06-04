@@ -1,16 +1,19 @@
 import React,{useState, Fragment} from 'react'
 import {useNavigate} from "react-router-dom"
-
+import { useLocation } from 'react-router-dom';
 export function TicketsQty({props}) {
 
   const [seniorTickets, setSeniorTickets] = useState(0)
   const [middleTickets, setMiddleTickets] = useState(0)
   const [childrenTickets, setChildrenTickets] = useState(0)
+  const {state} = useLocation();
+  const userLogged = state.userLogged
+  console.log('Tickets '+ userLogged)
 
   let navigate = useNavigate()
   const moveToSelectTickets = (totalTickets) => {
       
-      navigate('/TicketSelection',{state:{totalTickets: totalTickets, sessionCode: props.sessionCode}})
+      navigate('/TicketSelection',{state:{totalTickets: totalTickets, sessionCode: props.sessionCode,userLogged: userLogged}})
   }
 
   const continueShopping = () => {

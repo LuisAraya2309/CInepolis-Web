@@ -10,7 +10,7 @@ export function Billboard() {
 
   const [sessionsList,setSessionsList] = useState([])
   const {state} = useLocation();
-  const userLogged = state.user
+  const userLogged = state.userLogged
   
 
   useEffect(() => {

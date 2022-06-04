@@ -3,7 +3,6 @@ import { Link} from 'react-router-dom'
 
 
 export function DashCard({props}) {
-
     return (
         <div className="col">
             <div className="card  border-primary text-center h-100" >

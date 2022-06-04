@@ -13,8 +13,8 @@ export function TicketSelection() {
     const seatOptions = ['1','2','3','4','5','6','7','8','9','10']
     const {state} = useLocation();
     const totalTickets = state.totalTickets
-    
     const sessionCode = state.sessionCode
+    const userLogged = state.userLogged
     const [selectedSeats, setSelectedSeats] = useState("");
     const [occupiedSeats, setOccupiedSeats] = useState([])
     const [seatsLeft, setSeatsLeft] = useState(totalTickets.totalQty)
@@ -49,12 +49,7 @@ export function TicketSelection() {
         }
         
     
-    }
-
-    
-
-
-   
+    }   
 
   return (
     <Fragment>
@@ -116,8 +111,11 @@ export function TicketSelection() {
                         </form>
 
                         <button className="btn btn-primary mb-3" onClick={()=>{
-                            console.log(occupiedSeats)
                             //Update the session seats and make it through the shoppingCar
+                            axios.post('http://localhost:3001/shoppingCar/updateTicketsCar',{occupiedSeats:occupiedSeats, userLogged: userLogged,totalTickets:totalTickets, sessionCode:sessionCode} ).then((response) => {
+                                console.log(response.data)
+                            })
+
                         }} >Añadir al carrito</button>   
                         
                                                 
