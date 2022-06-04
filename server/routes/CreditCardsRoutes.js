@@ -5,8 +5,8 @@ const CreditCardModel = require('../models/CreditCards')
 router.post("/createCreditCard", async (req,res) => {
 
     const newCreditCard = req.body;
-    const newNumber = req.body.number
-    CreditCardModel.aggregate([{$match:{number:{$eq:newNumber}}}],(err,result)=>{
+    console.log(newCreditCard);
+    CreditCardModel.aggregate([{$match:{number:{$eq:req.body.number}}}],(err,result)=>{
         const validNumber = result[0] === undefined
         if(!validNumber){
             res.status(404).send()
@@ -31,16 +31,17 @@ router.post("/deleteCreditCardByNumber", async (req,res) => {
 })
 
 router.post("/getCreditCardByClient", async (req,res) => {
-    console.log(req.body);
-    CreditCardModel.aggregate([{$match:{clientEmail:{$eq:req.body.clientEmail}}}], (err,result) =>{
+    CreditCardModel.aggregate([{$match:{clientEmail:{$eq:"gabrieljn@itcr.ac.cr"}}}], (err,result) =>{
         if (err){
             res.status(404).send('Client invalid')
-        }
+        }   
         if(result[0] === undefined){
+            console.log("Respuesta vacía")
             res.status(404).send('Client invalid')
         }
         else{
-            res.json(result[0])
+            res.json(result)
+            console.log(result);
         }
     })
 })
