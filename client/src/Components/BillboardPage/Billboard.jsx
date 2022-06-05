@@ -19,7 +19,6 @@ export function Billboard() {
     const todaysDate = '25-05-2022'
     axios.post('http://localhost:3001/sessions/getSessions',{todaysDate}).then((response) => {
         setSessionsList(response.data)
-        console.log(response.data)
     })
   },[]);
 
@@ -34,15 +33,15 @@ export function Billboard() {
                         <div className='form-div'>
                             <h1 className ="display-1">Cartelera</h1>
                             <br/>
-                            
-                            <div className="row row-cols-1 row-cols-md-4 g-4">
+                          
+                            <div className="row row-cols-1 row-cols-md-4 g-4" >
                               {
                                 sessionsList.map((session) =>{
                                   var sessionBody = "Hora: "+ session.hour +"\n" + "Sala: " + session.room + "\n";
                                   var sessionCode = session.room + "-"+session.hour
                                   return(
                                     <Fragment>
-                                      <SessionCard key= {session.movie} props = {{description:sessionBody,image : 'https://drive.google.com/uc?export=view&id=1stfgrXx9BpAL6iEXrJspM3uLb8T7bQMv&rl', title : session.movie,redirectLink:'/Tickets',params : userLogged, code : sessionCode ,buttonTitle:'Comprar'}}/>
+                                      <SessionCard key= {session.movie} props = {{description:sessionBody,image : session.movieImage, title : session.movie,redirectLink:'/Tickets',params : userLogged, code : sessionCode ,buttonTitle:'Comprar'}}/>
                                     </Fragment>
                                     
                                   )
@@ -62,3 +61,6 @@ export function Billboard() {
   
     )
 }
+
+//<div className="row row-cols-1 row-cols-md-4 g-4" >
+//<div className={rowConfig}></div>

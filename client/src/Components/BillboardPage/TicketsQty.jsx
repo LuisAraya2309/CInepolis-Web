@@ -21,8 +21,7 @@ export function TicketsQty({props}) {
     const totalTickets = {
         seniorTickets: seniorTickets,
         middleTickets: middleTickets,
-        childrenTickets : childrenTickets,
-        totalQty : seniorTickets + middleTickets + childrenTickets
+        childrenTickets : childrenTickets
     }
     moveToSelectTickets(totalTickets)
 
