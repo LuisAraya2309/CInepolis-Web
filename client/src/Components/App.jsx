@@ -18,9 +18,14 @@ import { ModifyClient } from "./ManageClients/ModifyClient";
 import { CreateCreditCard } from "./ManageCreditCard/CreateCreditCard";
 import { ManageCreditCardPage } from "./ManageCreditCard/ManageCreditCardPage";
 import { TicketSelection } from './BillboardPage/TicketSelection';
+import { AdminPage } from './AdminPage/AdminPage';
+import { ManageMoviePage } from './ManageMovies/ManageMoviePage';
+import { CreateMovie } from './ManageMovies/CreateMovie';
 import { ManageSessionsPage } from './ManageSessions/ManageSessionsPage';
 import UpdateSession from './ManageSessions/UpdateSession';
 import CreateSession from './ManageSessions/CreateSession';
+import { ModifyMovie } from './ManageMovies/ModifyMovie';
+import { FindMovie } from './ManageMovies/FindMovie';
 
 export function App() {
   return (
@@ -54,6 +59,16 @@ export function App() {
               <Route exact path="/CreateCreditCard" element={<CreateCreditCard />}/>
 
               <Route exact path="/TicketSelection" element={<TicketSelection />}/>
+
+              <Route exact path ="/AdminPage" element={<AdminPage/>}/>
+
+              <Route exact path ="/ManageMovie" element={<ManageMoviePage/>}/>
+
+              <Route exact path ="/CreateMovie" element={<CreateMovie/>}/>
+
+              <Route exact path ="/FindMovie" element={<FindMovie/>}/>
+
+              <Route exact path ="/ModifyMovie" element={<ModifyMovie/>}/>
 
               <Route exact path="/ManageSessions" element={<ManageSessionsPage />}/>
 
