@@ -10,10 +10,37 @@ export function guardarArchivo(e, imageInfo) {
         { method: "POST", body: JSON.stringify(dataSend) }) //send to Api
         .then(res => res.json()).then((a) => {
           alert('Documento almacenado con éxito')
-          console.log(a)
           imageInfo[0] = a.id
         }).catch(e => console.log(e)) // Or Error in console
     }
   }
 
+function underNine(number){
+  if (number < 9){
+    return true
+  }else{
+    return false
+  }
+}
+
+export function getDate(){
   
+  const timePassed = Date.now();
+  const date = new Date(timePassed);
+
+  const map = {
+    dd: underNine(date.getDate()) ? '0' + date.getDate() : date.getDate(),
+    mm: underNine(date.getMonth() + 1) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1,
+    yyyy: date.getFullYear()
+  }
+
+  return map.yyyy + "-" + map.mm + "-"+ map.dd
+}
+
+export function getOverEightTeen(date){
+  
+  const [year, month, day] = date.split('-')
+  let newDate = year-18 + "-" + month + "-" + day
+  return newDate
+
+}

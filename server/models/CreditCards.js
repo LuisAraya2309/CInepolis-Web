@@ -2,7 +2,7 @@ const { default: mongoose } = require("mongoose");
 
 const CreditCardSchema = new mongoose.Schema({
     clientEmail:{
-        type:Number,
+        type:String,
         required:false,
     },
     name:{
@@ -18,7 +18,7 @@ const CreditCardSchema = new mongoose.Schema({
         required:false,
     },
     securityNumber:{
-        type:String,
+        type:Number,
         required:false,
     }
 

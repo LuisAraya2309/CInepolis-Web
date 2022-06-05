@@ -9,15 +9,16 @@ export function DeleteCreditCard({props}) {
     const {register,handleSubmit} = useForm();
     const [creditCardList,setCreditCardList] = useState([]);
 
-
+    console.log(props);
     let navigate = useNavigate()
     const moveTo = () =>{
-        let path = "/ManageCreditCard"
-        navigate(path)
+        let path = '/ManageCreditCard'
+        navigate(path,{state:{userLogged:props.clientInfo}})
+        
     }
     
     useEffect(() => {
-        axios.post('http://localhost:3001/creditCards/getCreditCardByClient',{clientEmail:"grabieljn@itcr.ac.cr"}).then((response) => {
+        axios.post('http://localhost:3001/creditCards/getCreditCardByClient',props.clientInfo).then((response) => {
             setCreditCardList(response.data)
         })
         // eslint-disable-next-line
@@ -34,7 +35,6 @@ export function DeleteCreditCard({props}) {
             alert('Se produjo un error')
         }
     }
-
   return (
     <Fragment>
         <div className="col">
@@ -47,7 +47,7 @@ export function DeleteCreditCard({props}) {
                         <option value="DEFAULT" disabled>Tarjetas registradas</option>
                         {creditCardList.map((creditCard) =>{
                             return (
-                                    <option key={creditCard.number} value={creditCard.number}> {creditCard.number} </option>
+                                    <option key={creditCard.number} value={creditCard.number}> {creditCard.number} - {creditCard.name} </option>
                                 );
                         })}
                         </select>

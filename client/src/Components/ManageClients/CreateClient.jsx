@@ -3,6 +3,8 @@ import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
 import {guardarArchivo} from "../GeneralResources/AuxiliarFunctions.js"
+import {getDate} from "../GeneralResources/AuxiliarFunctions.js"
+import {getOverEightTeen} from "../GeneralResources/AuxiliarFunctions.js"
 
 var pdfInfo = []
 
@@ -15,6 +17,9 @@ export  function CreateClient() {
       let path = '/ManageClient'
       navigate(path)
     }
+
+    const date = getDate();
+    const date2 = getOverEightTeen(date);
 
     const onSubmit = async(data) =>{
 
@@ -94,7 +99,7 @@ export  function CreateClient() {
                                         </div>
 
                                         <div className="col">
-                                            <input type="date" className="form-control" placeholder="Fecha de nacimiento" aria-label="Fecha de nacimiento" min="2000-01-02" {...register('birthDate',{required:true})}/>
+                                            <input type="date" className="form-control" placeholder="Fecha de nacimiento" aria-label="Fecha de nacimiento" min={date2} {...register('birthDate',{required:true})}/>
                                         </div> 
                                     </div>
 

@@ -8,6 +8,7 @@ export function ManageCreditCardPage() {
 
   const {state} = useLocation();
   const clientEmail = state.userLogged;
+  console.log(clientEmail);
   
   return (
     <Fragment>

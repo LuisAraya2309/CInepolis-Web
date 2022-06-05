@@ -3,22 +3,28 @@ import {useForm} from 'react-hook-form';
 import axios from 'axios';
 import {useLocation} from "react-router-dom"
 import {useNavigate} from "react-router-dom"
+import {getDate} from "../GeneralResources/AuxiliarFunctions.js"
 
 export  function CreateCreditCard() {
 
     const {register,handleSubmit} = useForm();
     const {state} = useLocation();
     const clientEmail = state.userLogged;
-    let navigate = useNavigate()
+    
+    const date = getDate();
+
+    let navigate = useNavigate();
+
     const moveTo = () =>{
       let path = '/ManageCreditCard'
-      navigate(path)
+      navigate(path, {state:{userLogged:clientEmail}})
     }
 
     const onSubmit = async(data) =>{
 
         try{
             data.clientEmail = clientEmail
+            console.log(data);
             axios.post('http://localhost:3001/creditCards/createCreditCard',data).then((response) => {
             })
             moveTo()
@@ -40,10 +46,10 @@ export  function CreateCreditCard() {
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="row">
                                         <div className="col">
-                                            <input type="text" className="form-control" placeholder="Titular" aria-label="Titular" {...register('name',{required:true})}/>
+                                            <input type="text" className="form-control" placeholder="Titular" aria-label="Titular" pattern = "^[A-Z]* [A-Z]* [A-Z]$" {...register('name',{required:true})}/>
                                         </div>
                                         <div className="col">
-                                            <input type="number" className="form-control" placeholder="Numero de la tarjeta" aria-label="Numero de la tarjeta " {...register('number',{required:true})}/>
+                                            <input type="text" className="form-control" minLength="16" maxLength="16" placeholder="Numero de la tarjeta" pattern = "^([\d])+$" aria-label="Numero de la tarjeta " {...register('number',{required:true})}/>
                                         </div>
 
                                     </div>
@@ -52,11 +58,11 @@ export  function CreateCreditCard() {
                                     <div className="row">
 
                                         <div className="col">
-                                            <input type="date" className="form-control" placeholder="Fecha de vencimiento" aria-label="Fecha de vencimiento" min="2000-01-02" {...register('expiredDate',{required:true})}/>
+                                            <input type="date" className="form-control" placeholder="Fecha de vencimiento" aria-label="Fecha de vencimiento" min={date}  {...register('expiredDate',{required:true})}/>
                                         </div> 
 
                                         <div className="col">
-                                            <input type="password" className="form-control" placeholder="Numero de seguridad" aria-label="Numero de seguridad" {...register('securityNumber',{required:true})}/>
+                                            <input type="password" className="form-control" minLength="3" maxLength="3" pattern = "^([\d])+$" placeholder="Numero de seguridad" aria-label="Numero de seguridad" {...register('securityNumber',{required:true})}/>
                                         </div> 
                                     </div>
 
