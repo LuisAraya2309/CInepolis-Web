@@ -59,4 +59,29 @@ router.post("/getMovieByName", async (req,res) => {
 })
 
 
+// Modificar una pelicula en especifico
+router.post("/updateMovieByName", async (req,res) => {
+    const setAttributes = {
+        director: req.body.director, 
+        actors:req.body.actors,
+        genders:req.body.genders,
+        languages:req.body.languages,
+        year:req.body.year,
+        length:req.body.length,
+        requiredAge:req.body.requiredAge,
+        image:req.body.image};
+    MoviesModel.updateOne({title:req.body.title},{$set:setAttributes},(err,result) =>{
+
+        const validName = result[0] === undefined
+        if(!validName){
+            res.status(404).send('Movie not found')
+        }
+        else{
+            res.json(result[0])
+        }
+    })
+})
+
+
+
 module.exports = router;

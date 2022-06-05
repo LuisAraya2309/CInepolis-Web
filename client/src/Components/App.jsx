@@ -24,6 +24,8 @@ import { CreateMovie } from './ManageMovies/CreateMovie';
 import { ManageSessionsPage } from './ManageSessions/ManageSessionsPage';
 import UpdateSession from './ManageSessions/UpdateSession';
 import CreateSession from './ManageSessions/CreateSession';
+import { ModifyMovie } from './ManageMovies/ModifyMovie';
+import { FindMovie } from './ManageMovies/FindMovie';
 
 export function App() {
   return (
@@ -63,6 +65,10 @@ export function App() {
               <Route exact path ="/ManageMovie" element={<ManageMoviePage/>}/>
 
               <Route exact path ="/CreateMovie" element={<CreateMovie/>}/>
+
+              <Route exact path ="/FindMovie" element={<FindMovie/>}/>
+
+              <Route exact path ="/ModifyMovie" element={<ModifyMovie/>}/>
 
               <Route exact path="/ManageSessions" element={<ManageSessionsPage />}/>
 

@@ -62,8 +62,8 @@ export function MoviesList({props}) {
             <option value="DEFAULT" disabled>Peliculas Disponibles</option>
             {moviesList.map((movie) =>{
                 return (
-                        <option key={movie.title} value={movie.title}> {movie.title} </option>
-                    );
+                    <option key={movie.title} value={movie.title}> {movie.title} </option>
+                );
             })}
             </select>
             <input type="submit" className="btn btn-danger btn-block" value = {props.buttonTitle} />        
