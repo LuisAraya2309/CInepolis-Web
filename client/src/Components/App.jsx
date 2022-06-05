@@ -18,6 +18,9 @@ import { ModifyClient } from "./ManageClients/ModifyClient";
 import { CreateCreditCard } from "./ManageCreditCard/CreateCreditCard";
 import { ManageCreditCardPage } from "./ManageCreditCard/ManageCreditCardPage";
 import { TicketSelection } from './BillboardPage/TicketSelection';
+import { ManageSessionsPage } from './ManageSessions/ManageSessionsPage';
+import UpdateSession from './ManageSessions/UpdateSession';
+import CreateSession from './ManageSessions/CreateSession';
 
 export function App() {
   return (
@@ -51,6 +54,12 @@ export function App() {
               <Route exact path="/CreateCreditCard" element={<CreateCreditCard />}/>
 
               <Route exact path="/TicketSelection" element={<TicketSelection />}/>
+
+              <Route exact path="/ManageSessions" element={<ManageSessionsPage />}/>
+
+              <Route exact path="/UpdateSession" element={<UpdateSession />}/>
+
+              <Route exact path="/CreateSession" element={<CreateSession />}/>
           </Routes>
 
       </div>

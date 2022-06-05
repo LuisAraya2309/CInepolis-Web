@@ -38,7 +38,7 @@ export function Billboard() {
                             <div className="row row-cols-1 row-cols-md-4 g-4">
                               {
                                 sessionsList.map((session) =>{
-                                  var sessionBody = "Hora: "+session.hour +"\n" + "Sala: " + session.room + "\n";
+                                  var sessionBody = "Hora: "+ session.hour +"\n" + "Sala: " + session.room + "\n";
                                   var sessionCode = session.room + "-"+session.hour
                                   return(
                                     <Fragment>
