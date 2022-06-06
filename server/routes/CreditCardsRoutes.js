@@ -31,7 +31,7 @@ router.post("/deleteCreditCardByNumber", async (req,res) => {
 })
 
 router.post("/getCreditCardByClient", async (req,res) => {
-    CreditCardModel.aggregate([{$match:{clientEmail:{$eq:"gabrieljn@itcr.ac.cr"}}}], (err,result) =>{
+    CreditCardModel.aggregate([{$match:{clientEmail:{$eq:req.body.email}}}], (err,result) =>{
         if (err){
             res.status(404).send('Client invalid')
         }   

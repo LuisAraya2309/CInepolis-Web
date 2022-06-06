@@ -12,7 +12,6 @@ export  function LoginForm() {
         navigate(adminPath,{state:{user:userLogged}})
     }
 
-
     const onSubmit = async(data) =>{
         try{
             

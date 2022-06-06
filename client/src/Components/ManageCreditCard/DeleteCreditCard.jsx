@@ -12,13 +12,13 @@ export function DeleteCreditCard({props}) {
     console.log(props);
     let navigate = useNavigate()
     const moveTo = () =>{
-        let path = '/ManageCreditCard'
-        navigate(path,{state:{userLogged:props.clientInfo}})
+        let path = '/ClientPage'
+        navigate(path,{state:{user:props.clientEmail}})
         
     }
     
     useEffect(() => {
-        axios.post('http://localhost:3001/creditCards/getCreditCardByClient',props.clientInfo).then((response) => {
+        axios.post('http://localhost:3001/creditCards/getCreditCardByClient',{'email': props.clientEmail}).then((response) => {
             setCreditCardList(response.data)
         })
         // eslint-disable-next-line

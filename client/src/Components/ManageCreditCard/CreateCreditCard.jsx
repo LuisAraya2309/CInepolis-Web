@@ -15,19 +15,20 @@ export  function CreateCreditCard() {
 
     let navigate = useNavigate();
 
-    const moveTo = () =>{
-      let path = '/ManageCreditCard'
-      navigate(path, {state:{userLogged:clientEmail}})
+    const moveTo = (clientEmailInfo) =>{
+        console.log(clientEmailInfo);
+      let path = '/ClientPage'
+      navigate(path, {state:{user:clientEmailInfo}})
     }
 
     const onSubmit = async(data) =>{
 
         try{
             data.clientEmail = clientEmail
-            console.log(data);
             axios.post('http://localhost:3001/creditCards/createCreditCard',data).then((response) => {
             })
-            moveTo()
+            console.log(clientEmail);
+            moveTo(clientEmail)
         }catch(err){
             alert(err)
         }

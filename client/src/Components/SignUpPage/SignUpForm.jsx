@@ -4,6 +4,7 @@ import {guardarArchivo} from "../GeneralResources/AuxiliarFunctions.js"
 import axios from 'axios'
 import {getDate} from "../GeneralResources/AuxiliarFunctions.js"
 import {getOverEightTeen} from "../GeneralResources/AuxiliarFunctions.js"
+import {useNavigate} from "react-router-dom"
 
 var pdfInfo = []
 
@@ -13,6 +14,12 @@ export function SignUpForm() {
     const date = getDate();
     const date2 = getOverEightTeen(date);
 
+    let navigate = useNavigate()
+    const moveTo = () =>{
+      let path = '/'
+      navigate(path)
+    }
+
     const onSubmit = async(data) =>{
         try{
             data.type = 'client'
@@ -20,7 +27,12 @@ export function SignUpForm() {
             "vaccinationCard":"https://drive.google.com/uc?export=view&id=" + pdfInfo[0] + "&rl"}
             delete data["ID"]; delete data["birthDate"]; delete data["vaccines"];
 
-            await axios.post('http://localhost:3001/users/createUser', data);
+            axios.post('http://localhost:3001/shoppingCar/insertShoppingCar',{clientEmail:data['email']}).then((response) => {});
+            const response = await axios.post('http://localhost:3001/users/createUser', data);
+            console.log(response);
+            moveTo()
+            
+
         }catch(err){
                 alert(err)
         }
