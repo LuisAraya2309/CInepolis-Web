@@ -46,7 +46,8 @@ export function MoviesList({props}) {
             }
             if(props.action === 'Eliminar'){
                 axios.post('http://localhost:3001/movies/deleteMovie',data).then((response) => {
-                moveTo(response.data)
+                    alert('Se elimino la pelicula exitosamente')
+                    window.location.replace('');
                 })
             }  
             

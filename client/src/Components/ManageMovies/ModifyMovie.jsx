@@ -51,7 +51,7 @@ export function ModifyMovie() {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Titulo</label>
-                                        <input type="text" className="form-control" value = {movieInfo.title} aria-label="Titulo" {...register('title',{required:true})}/>
+                                        <input type="text" className="form-control" value = {movieInfo.title} readOnly aria-label="Titulo" {...register('title',{required:true})}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -59,12 +59,12 @@ export function ModifyMovie() {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Director</label>
-                                        <input type="text" className="form-control" value={movieInfo.director} aria-label="Director" {...register('director',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue={movieInfo.director} aria-label="Director" {...register('director',{required:true})}/>
                                     </div>
 
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Año de Publicación</label>
-                                        <input type="text" className="form-control" value= {movieInfo.year} aria-label="Año de Publicación" {...register('year',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue= {movieInfo.year} aria-label="Año de Publicación" {...register('year',{required:true})}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -72,12 +72,12 @@ export function ModifyMovie() {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Duración</label>
-                                        <input type="text" className="form-control" value={movieInfo.length} aria-label="Duración" {...register('length',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue={movieInfo.length} aria-label="Duración" {...register('length',{required:true})}/>
                                     </div>
 
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Edad Requerida</label>
-                                        <input type="text" className="form-control" value={movieInfo.requiredAge} aria-label="Edad Requerida" {...register('requiredAge',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue={movieInfo.requiredAge} aria-label="Edad Requerida" {...register('requiredAge',{required:true})}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -85,7 +85,7 @@ export function ModifyMovie() {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Actores</label>
-                                        <input type="text" className="form-control" value={movieInfo.actors} aria-label="Actores" {...register('actors',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue={movieInfo.actors} aria-label="Actores" {...register('actors',{required:true})}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -93,7 +93,7 @@ export function ModifyMovie() {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Generos</label>
-                                        <input type="text" className="form-control" value={movieInfo.genders} aria-label="Generos" {...register('genders',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue={movieInfo.genders} aria-label="Generos" {...register('genders',{required:true})}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -101,7 +101,7 @@ export function ModifyMovie() {
                                 <div className="row">
                                     <div className="col">
                                         <label htmlFor="text" className="form-label">Lenguajes</label>
-                                        <input type="text" className="form-control" value={movieInfo.languages} aria-label="Lenguajes" {...register('languages',{required:true})}/>
+                                        <input type="text" className="form-control" defaultValue={movieInfo.languages} aria-label="Lenguajes" {...register('languages',{required:true})}/>
                                     </div>
                                 </div>
                                 <br></br>

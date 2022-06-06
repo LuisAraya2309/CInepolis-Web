@@ -23,7 +23,7 @@ export function ClientPage() {
                             
                             <DashCard props={{title:"Cartelera", image:starImage,redirectLink:"/Billboard",params:userLogged,buttonTitle:"Consultar"}} />
     
-                            <DashCard props={{title:"Dulcería", image:popcornImage,redirectLink:"/",params:userLogged,buttonTitle:"Consultar"}} />                            
+                            <DashCard props={{title:"Dulcería", image:popcornImage,redirectLink:"/Snacks",params:userLogged,buttonTitle:"Consultar"}} />                            
     
                             <DashCard props={{title:"Carrito de Compras", image:shoppingCarImage,redirectLink:"/ShoppingCar",params:userLogged,buttonTitle:"Consultar"}} />
                            

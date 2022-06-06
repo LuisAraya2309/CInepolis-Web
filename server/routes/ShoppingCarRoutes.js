@@ -76,4 +76,31 @@ router.get("/getShoppingCars",(req,res) => {
 })
 
 
+
+
+router.post("/addNewSnack", async (req,res) => {
+    var snackName = req.body.snackName
+    var userLogged = req.body.userLogged
+    var snacks = req.body.snacks
+
+    ShoppingCarModel.findOneAndUpdate({clientEmail:userLogged},{snacks:snacks},{new:true},(err, result)=>{
+        res.json(result)
+    })
+})
+
+
+router.post("/getSnacks", async (req,res) => {
+    ShoppingCarModel.aggregate([{$match:{clientEmail:{$eq:req.body.userLogged}}}], (err,result) =>{
+        if (err){
+            res.status(404).send('Invalid Snack Name')
+        }
+        if(result[0] === undefined){
+            res.status(404).send('Invalid Snack Name')
+        }
+        else{
+            res.json(result[0])
+        }
+    })
+})
+
 module.exports = router;

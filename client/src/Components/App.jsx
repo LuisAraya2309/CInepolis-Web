@@ -26,6 +26,8 @@ import UpdateSession from './ManageSessions/UpdateSession';
 import CreateSession from './ManageSessions/CreateSession';
 import { ModifyMovie } from './ManageMovies/ModifyMovie';
 import { FindMovie } from './ManageMovies/FindMovie';
+import { SnackPage } from './SnackPage/SnackPage';
+import { BuySnack } from './SnackPage/BuySnack';
 import { ShoppingCar } from './ShoppingCar/ShoppingCarPage';
 
 export function App() {
@@ -76,6 +78,10 @@ export function App() {
               <Route exact path="/UpdateSession" element={<UpdateSession />}/>
 
               <Route exact path="/CreateSession" element={<CreateSession />}/>
+
+              <Route exact path="/Snacks" element={<SnackPage />}/>
+
+              <Route exact path="/BuySnack" element={<BuySnack />}/>
           
               <Route exact path="/ShoppingCar" element={<ShoppingCar />}/>
           </Routes>
