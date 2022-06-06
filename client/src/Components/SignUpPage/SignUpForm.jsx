@@ -92,7 +92,7 @@ export function SignUpForm() {
                 </div>
 
                 <div className="col">
-                    <input type="date" className="form-control" placeholder="Fecha de nacimiento" aria-label="Fecha de nacimiento" min={date2} {...register('birthDate',{required:true})}/>
+                    <input type="date" className="form-control" placeholder="Fecha de nacimiento" aria-label="Fecha de nacimiento" max={date2} {...register('birthDate',{required:true})}/>
                 </div> 
             </div>
 

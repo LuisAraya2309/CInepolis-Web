@@ -4,8 +4,8 @@ import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { ShoppingCards } from '../GeneralResources/ShoppingCards'
 import ticketsImg from "../../images/tickets.png"
-import {getSnacks} from "../GeneralResources/AuxiliarFunctions.js"
-import {getCheckOutInfo} from "../GeneralResources/AuxiliarFunctions.js"
+import {getSnacks} from "./AuxiliarFunctionsShoppingCar.js"
+import {getCheckOutInfo} from "./AuxiliarFunctionsShoppingCar.js"
 import {useLocation} from "react-router-dom"
 
 var snackResult = [];
